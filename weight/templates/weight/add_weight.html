@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Weight</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .btn-danger {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Add Your Weight</h2>
+    <form method="post"> 
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Add Weight</button>
+    </form>
+    
+    {% if form.non_field_errors %}
+        <p style="color:red; text-align: center;">{{ form.non_field_errors }}</p>
+    {% endif %}
+    <a href="{%url 'weight_history'%}"class="btn btn-danger">Weight History</a>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    
+</div>
+</body>
+</html>
